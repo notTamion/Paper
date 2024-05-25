@@ -76,7 +76,7 @@ index 3d33504eac6af17c8833de11226968d52f96232f..4d7c2832a9cd9a88b99c837a02df7fa9
  
      @Override
 diff --git a/src/main/java/net/minecraft/server/level/ServerPlayer.java b/src/main/java/net/minecraft/server/level/ServerPlayer.java
-index dde6d567521a08b416ee50b1249b653b0bf6e87a..9750c0309a9dae50b62bfbe5f29a2a6f3c981e62 100644
+index bf6c81300d29c445a1012d1159866547c202d135..e6a24484ef11a1d815a85126aec221547479f7d3 100644
 --- a/src/main/java/net/minecraft/server/level/ServerPlayer.java
 +++ b/src/main/java/net/minecraft/server/level/ServerPlayer.java
 @@ -1238,7 +1238,7 @@ public class ServerPlayer extends Player {
@@ -102,10 +102,10 @@ index 299a2e78f4a83d224038c80287636a5d6b9b7450..95d20facdc43a356fd2e82f5d597f52e
      }
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 01224af0835a00343923767186dceb53900c0832..e7535d4739f217a8fda2c15c74d44637825a0322 100644
+index 0ba3826311645973ce52b190f6d151e62c26183f..f7d6f86e0be2372ded6f96ae76e2c2bc2295ca96 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -962,8 +962,8 @@ public final class CraftServer implements Server {
+@@ -969,8 +969,8 @@ public final class CraftServer implements Server {
          org.spigotmc.SpigotConfig.init((File) this.console.options.valueOf("spigot-settings")); // Spigot
          this.console.paperConfigurations.reloadConfigs(this.console);
          for (ServerLevel world : this.console.getAllLevels()) {

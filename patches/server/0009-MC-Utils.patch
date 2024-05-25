@@ -7073,7 +7073,7 @@ index d5c3ebe351803c3dd24f0667aa87e13c6b420080..d2f75ced3ad4ccb9d1d44307bfc98e69
      @Override
      public float getBukkitYaw() {
 diff --git a/src/main/java/net/minecraft/world/entity/Mob.java b/src/main/java/net/minecraft/world/entity/Mob.java
-index 04d9e3aced11c54b8f464ae7faba1b4aaf81e093..39e71ff8528622f640950d1a9b33483a7eb68957 100644
+index 1e599ab9c9576a42b32533abbd021f32223e53a2..d615649c67b54cfd1cb083e3ddb9719255e90bc7 100644
 --- a/src/main/java/net/minecraft/world/entity/Mob.java
 +++ b/src/main/java/net/minecraft/world/entity/Mob.java
 @@ -287,6 +287,8 @@ public abstract class Mob extends LivingEntity implements EquipmentUser, Targeti
@@ -7751,10 +7751,10 @@ index 34933c5324126f9afdc5cba9dea997ace8f01806..219062cff8a05c765b092f1525043d9d
              return false;
          } else {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index ca10f5f6fa70b2e3f4f09a132c91df331a1de559..4cc75d39dd1104805e96c1d442400f2c18a7af2a 100644
+index d1fbd949895a2a618b2af69bb8bbeae305babe26..2ff00da4c5c65c82c3534e655fc5009bd953e375 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2562,4 +2562,9 @@ public final class CraftServer implements Server {
+@@ -2569,4 +2569,9 @@ public final class CraftServer implements Server {
          return this.spigot;
      }
      // Spigot end
@@ -8131,7 +8131,7 @@ index 0000000000000000000000000000000000000000..909b2c98e7a9117d2f737245e4661792
 +    }
 +}
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-index 2166c420c47778caadf8f3140bbe3aebe06e130f..8a13d8ae4325854acb3be7083d022c08ba094df1 100644
+index 3b010825028f142c58fad40802c40df62486e903..951f76eff07e53af20105b29a4e3c81b78ef8b65 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 @@ -109,8 +109,17 @@ public final class CraftMagicNumbers implements UnsafeValues {
@@ -8283,20 +8283,3 @@ index 0c7c97f27853843ec714e47f5b570f9d09bbba14..ff422d4d4f2b764370f0ee2af1303485
          MONSTER,
          ANIMAL,
          RAIDER,
-diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index 38219af7d0ba2d871711102b6a29139a49678f6b..60e354fe1d32cd315ed42cea4484c83c4b5e7e25 100644
---- a/src/main/java/org/spigotmc/SpigotConfig.java
-+++ b/src/main/java/org/spigotmc/SpigotConfig.java
-@@ -118,7 +118,11 @@ public class SpigotConfig
-                 }
-             }
-         }
--
-+        // Paper start
-+        SpigotConfig.save();
-+    }
-+    public static void save() {
-+        // Paper end
-         try
-         {
-             SpigotConfig.config.save( SpigotConfig.CONFIG_FILE );

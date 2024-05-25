@@ -25,7 +25,7 @@ Other changes:
 Co-Authored-By: Emilia Kond <emilia@rymiel.space>
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 18221614060ec945cb8b197acd276e45450f7394..90ca693814a82c30de238b0228750b769a9a9c80 100644
+index 0dcd2f08798e852a2e23e7438829a8dd491c4169..a96a8af987a1bb2e9b4510afab72aa9d99a8629f 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -5,9 +5,29 @@ plugins {
@@ -396,7 +396,7 @@ index 0ff094a90bf471ce57a3054c7701dc3d67742d9d..50f4b77c83854932050cc543c7c2deea
  
          this.bans = new UserBanList(PlayerList.USERBANLIST_FILE);
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index a5c420721cd1905bb0d00f9e1e40e4fbdf98cce6..7d850ef45093ab5ca0dd29b29ed36f663f3fa2e2 100644
+index d48ff8541e80c6c708790ec11b5f1e5fcf70ec04..3b0f370541baedb45ce614362c53cee2666e6d4f 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -42,7 +42,7 @@ import java.util.logging.Level;
@@ -408,7 +408,7 @@ index a5c420721cd1905bb0d00f9e1e40e4fbdf98cce6..7d850ef45093ab5ca0dd29b29ed36f66
  import net.minecraft.advancements.AdvancementHolder;
  import net.minecraft.commands.CommandSourceStack;
  import net.minecraft.commands.Commands;
-@@ -1320,9 +1320,13 @@ public final class CraftServer implements Server {
+@@ -1327,9 +1327,13 @@ public final class CraftServer implements Server {
          return this.logger;
      }
  

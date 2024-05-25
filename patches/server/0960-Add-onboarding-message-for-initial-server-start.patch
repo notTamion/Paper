@@ -5,10 +5,10 @@ Subject: [PATCH] Add onboarding message for initial server start
 
 
 diff --git a/src/main/java/io/papermc/paper/configuration/Configurations.java b/src/main/java/io/papermc/paper/configuration/Configurations.java
-index 7684e71f802f3d19e5340713b45cc84860ce9495..96142deb42700f888ea08689ab62c27ef2b881fd 100644
+index 761387d9e6eb218055bb6bdaf3fdb6c62e28ffe5..63bf43043efd0f0638dc6fc2c2583535c9d9a638 100644
 --- a/src/main/java/io/papermc/paper/configuration/Configurations.java
 +++ b/src/main/java/io/papermc/paper/configuration/Configurations.java
-@@ -129,6 +129,7 @@ public abstract class Configurations<G, W> {
+@@ -132,6 +132,7 @@ public abstract class Configurations<G, W> {
          if (Files.notExists(configFile)) {
              node = CommentedConfigurationNode.root(loader.defaultOptions());
              node.node(Configuration.VERSION_FIELD).raw(this.globalConfigVersion());

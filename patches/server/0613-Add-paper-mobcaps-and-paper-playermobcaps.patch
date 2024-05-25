@@ -278,10 +278,10 @@ index 58ea6a1f95a09c22125a8262b1b221004ebce0e4..ea6533c1ac218aa075da3401807a06fc
          BlockPos blockposition = NaturalSpawner.getRandomPosWithin(world, chunk);
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index ceb18ee56a99f56997f09e9d6dd01b8b58194430..2e7c206956ded65795f5f2d36acce97381cf80ea 100644
+index 90614e989cb82e863110f71215057f4319494b65..28b8fe47fa5b5ae5d5e8f8ae56cdc4160f55289c 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2293,6 +2293,11 @@ public final class CraftServer implements Server {
+@@ -2300,6 +2300,11 @@ public final class CraftServer implements Server {
  
      @Override
      public int getSpawnLimit(SpawnCategory spawnCategory) {

@@ -617,10 +617,10 @@ index 21b8f1913ff54d2b1553826269355da8bdb7f702..b9c22f725f5aeaee469fe5b7d8c3a57d
          this.setPvpAllowed(dedicatedserverproperties.pvp);
          this.setFlightAllowed(dedicatedserverproperties.allowFlight);
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 7d850ef45093ab5ca0dd29b29ed36f663f3fa2e2..4c177faf5eda2cb5a34f84586a4bf45be942e0d6 100644
+index 3b0f370541baedb45ce614362c53cee2666e6d4f..d19c548d340f565767f78fcf89ec8f7db822a57a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -952,6 +952,7 @@ public final class CraftServer implements Server {
+@@ -959,6 +959,7 @@ public final class CraftServer implements Server {
          this.commandMap.clearCommands();
          this.reloadData();
          org.spigotmc.SpigotConfig.registerCommands(); // Spigot
@@ -628,7 +628,7 @@ index 7d850ef45093ab5ca0dd29b29ed36f663f3fa2e2..4c177faf5eda2cb5a34f84586a4bf45b
          this.overrideAllCommandBlockCommands = this.commandsConfiguration.getStringList("command-block-overrides").contains("*");
          this.ignoreVanillaPermissions = this.commandsConfiguration.getBoolean("ignore-vanilla-permissions");
  
-@@ -2672,6 +2673,34 @@ public final class CraftServer implements Server {
+@@ -2679,6 +2680,34 @@ public final class CraftServer implements Server {
      // Paper end
  
      // Paper start

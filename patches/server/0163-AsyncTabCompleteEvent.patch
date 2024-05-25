@@ -80,10 +80,10 @@ index 196682a91c47ed2c4d2a8e1b71728200cc22191c..fffd671feb7a4e9805eafc473632b232
  
          this.server.getCommands().getDispatcher().getCompletionSuggestions(parseresults).thenAccept((suggestions) -> {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index ea8e5b4775944fc2bf4e30c311b281363bd21049..9126d9409d1df900790db05c4c30a224460c36cd 100644
+index 2c9e62153986aa0577ca37ea41bbacbed48e6dc8..9a9686e176ed47e5bd92d0f10e4a8e79de8a017b 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2253,7 +2253,7 @@ public final class CraftServer implements Server {
+@@ -2260,7 +2260,7 @@ public final class CraftServer implements Server {
              offers = this.tabCompleteChat(player, message);
          }
  

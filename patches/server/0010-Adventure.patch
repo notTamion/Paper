@@ -3315,10 +3315,10 @@ index 3db3c6858d98d2eaf7c9bd8d395b83b22c447bb9..d42d39dff5aeb91c5b1e6a7fb967ce70
                  }
                  collection = icons;
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 4cc75d39dd1104805e96c1d442400f2c18a7af2a..a5c420721cd1905bb0d00f9e1e40e4fbdf98cce6 100644
+index 2ff00da4c5c65c82c3534e655fc5009bd953e375..d48ff8541e80c6c708790ec11b5f1e5fcf70ec04 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -611,8 +611,10 @@ public final class CraftServer implements Server {
+@@ -618,8 +618,10 @@ public final class CraftServer implements Server {
      }
  
      @Override
@@ -3329,7 +3329,7 @@ index 4cc75d39dd1104805e96c1d442400f2c18a7af2a..a5c420721cd1905bb0d00f9e1e40e4fb
      }
  
      @Override
-@@ -1587,7 +1589,15 @@ public final class CraftServer implements Server {
+@@ -1594,7 +1596,15 @@ public final class CraftServer implements Server {
          return this.configuration.getInt("settings.spawn-radius", -1);
      }
  
@@ -3345,7 +3345,7 @@ index 4cc75d39dd1104805e96c1d442400f2c18a7af2a..a5c420721cd1905bb0d00f9e1e40e4fb
      public String getShutdownMessage() {
          return this.configuration.getString("settings.shutdown-message");
      }
-@@ -1761,7 +1771,20 @@ public final class CraftServer implements Server {
+@@ -1768,7 +1778,20 @@ public final class CraftServer implements Server {
      }
  
      @Override
@@ -3366,7 +3366,7 @@ index 4cc75d39dd1104805e96c1d442400f2c18a7af2a..a5c420721cd1905bb0d00f9e1e40e4fb
          Set<CommandSender> recipients = new HashSet<>();
          for (Permissible permissible : this.getPluginManager().getPermissionSubscriptions(permission)) {
              if (permissible instanceof CommandSender && permissible.hasPermission(permission)) {
-@@ -1769,14 +1792,14 @@ public final class CraftServer implements Server {
+@@ -1776,14 +1799,14 @@ public final class CraftServer implements Server {
              }
          }
  
@@ -3383,7 +3383,7 @@ index 4cc75d39dd1104805e96c1d442400f2c18a7af2a..a5c420721cd1905bb0d00f9e1e40e4fb
  
          for (CommandSender recipient : recipients) {
              recipient.sendMessage(message);
-@@ -2038,6 +2061,14 @@ public final class CraftServer implements Server {
+@@ -2045,6 +2068,14 @@ public final class CraftServer implements Server {
          return CraftInventoryCreator.INSTANCE.createInventory(owner, type);
      }
  
@@ -3398,7 +3398,7 @@ index 4cc75d39dd1104805e96c1d442400f2c18a7af2a..a5c420721cd1905bb0d00f9e1e40e4fb
      @Override
      public Inventory createInventory(InventoryHolder owner, InventoryType type, String title) {
          Preconditions.checkArgument(type != null, "InventoryType cannot be null");
-@@ -2052,13 +2083,28 @@ public final class CraftServer implements Server {
+@@ -2059,13 +2090,28 @@ public final class CraftServer implements Server {
          return CraftInventoryCreator.INSTANCE.createInventory(owner, size);
      }
  
@@ -3427,7 +3427,7 @@ index 4cc75d39dd1104805e96c1d442400f2c18a7af2a..a5c420721cd1905bb0d00f9e1e40e4fb
      public Merchant createMerchant(String title) {
          return new CraftMerchantCustom(title == null ? InventoryType.MERCHANT.getDefaultTitle() : title);
      }
-@@ -2123,6 +2169,17 @@ public final class CraftServer implements Server {
+@@ -2130,6 +2176,17 @@ public final class CraftServer implements Server {
          return Thread.currentThread().equals(this.console.serverThread) || this.console.hasStopped() || !org.spigotmc.AsyncCatcher.enabled; // All bets are off if we have shut down (e.g. due to watchdog)
      }
  
@@ -3445,7 +3445,7 @@ index 4cc75d39dd1104805e96c1d442400f2c18a7af2a..a5c420721cd1905bb0d00f9e1e40e4fb
      @Override
      public String getMotd() {
          return this.console.getMotd();
-@@ -2567,4 +2624,57 @@ public final class CraftServer implements Server {
+@@ -2574,4 +2631,57 @@ public final class CraftServer implements Server {
      public double[] getTPS() {
          return new double[]{0, 0, 0}; // TODO
      }

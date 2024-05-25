@@ -590,10 +590,10 @@ index 9e21566fc4d76ae2e305f0e1d47d8c2f1c1f2c4c..c95a0af32178fe24448a5ae7a229c86e
       * Calculates distance between 2 entities
       * @param e1
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index 6afede80c10503a261d0f735c351d943597be9ff..993296f9c2457809bd6b844c309895f417eb42a5 100644
+index aa1d96e7a75b74deee67cae7282dcdd57f71a8cd..a6c2b8337dae53e981ba90ee2a1ce68c25a82686 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
-@@ -168,7 +168,7 @@ public class Main {
+@@ -179,7 +179,7 @@ public class Main {
              }
  
              File file = (File) optionset.valueOf("universe"); // CraftBukkit
@@ -625,7 +625,7 @@ index 416b26c2ab62b29d640169166980e398d5824b14..774d81c702edb76a2f6184d4dc53687d
          String s1 = name.toLowerCase(Locale.ROOT);
          GameProfileCache.GameProfileInfo usercache_usercacheentry = (GameProfileCache.GameProfileInfo) this.profilesByName.get(s1);
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 02308021712a2e947bd389e625b5d93e62f5024b..f7c258b6f0f4eb6094828da20e4a5af2388a04ac 100644
+index 9556e989df316c9d685bde38fa7c8dcae22fa6a7..bfe632c238f05130ce69177f1ae80aaf9c45ffd8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -260,6 +260,9 @@ import org.yaml.snakeyaml.error.MarkedYAMLException;
@@ -646,7 +646,7 @@ index 02308021712a2e947bd389e625b5d93e62f5024b..f7c258b6f0f4eb6094828da20e4a5af2
          CraftItemFactory.instance();
          CraftEntityFactory.instance();
      }
-@@ -2804,5 +2808,39 @@ public final class CraftServer implements Server {
+@@ -2811,5 +2815,39 @@ public final class CraftServer implements Server {
      public boolean suggestPlayerNamesWhenNullTabCompletions() {
          return io.papermc.paper.configuration.GlobalConfiguration.get().commands.suggestPlayerNamesWhenNullTabCompletions;
      }

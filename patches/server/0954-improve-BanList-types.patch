@@ -5,10 +5,10 @@ Subject: [PATCH] improve BanList types
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 34242fa907bb87ef78cf96ca81ae224de750956f..927c3110a64cfab665137a6f0c8b72075168f2bf 100644
+index 3fa57c24877d8788e62699dc19c6c3464148ddb9..513b674ecd5db894862faa02006ff44e71bd4e77 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2218,6 +2218,21 @@ public final class CraftServer implements Server {
+@@ -2225,6 +2225,21 @@ public final class CraftServer implements Server {
          };
      }
  

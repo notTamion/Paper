@@ -60,10 +60,10 @@ index a0b0614ac7d2009db5c6c10ab4a5f09dd447c635..653856d0b8dcf2baf4cc77a276f17c8c
          } else {
              String[] astring1 = astring;
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 9eb00817b757fea2d2400aac7a33f72866ab8796..762c9b039cb4591745d341ae0988dafae38d1aed 100644
+index 841ac86e70f7b9efc2faaf7d98ed2ced3c8355aa..fa10a129ccb351a027458d408ce36973881b8351 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1852,7 +1852,7 @@ public final class CraftServer implements Server {
+@@ -1859,7 +1859,7 @@ public final class CraftServer implements Server {
          if (result == null) {
              GameProfile profile = null;
              // Only fetch an online UUID in online mode

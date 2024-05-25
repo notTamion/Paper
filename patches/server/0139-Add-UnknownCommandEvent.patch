@@ -78,10 +78,10 @@ index b81a4204a85e5b431cd6137fd8b80e43779c97b7..eec5279ac4386132fa053c57889e32e6
  
              return null;
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index f7c258b6f0f4eb6094828da20e4a5af2388a04ac..ea8e5b4775944fc2bf4e30c311b281363bd21049 100644
+index bfe632c238f05130ce69177f1ae80aaf9c45ffd8..2c9e62153986aa0577ca37ea41bbacbed48e6dc8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -914,7 +914,13 @@ public final class CraftServer implements Server {
+@@ -921,7 +921,13 @@ public final class CraftServer implements Server {
  
          // Spigot start
          if (!org.spigotmc.SpigotConfig.unknownCommandMessage.isEmpty()) {

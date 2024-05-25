@@ -16,10 +16,10 @@ modify that. Under the previous logic, plugins were unable (cleanly) override pe
 A config option has been added for those who depend on the previous behavior, but I don't expect that.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 8ebd605a35b16a07ed1d927ebc9308a56a497c40..a4fffd20b0617563a67d5b9980814a7dc6fda997 100644
+index 587c37554d71ced790fc0d4ca8ab7b9421690b88..840d71203abdd55b1bc9c822a8d8d3fde633288d 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -454,6 +454,7 @@ public final class CraftServer implements Server {
+@@ -461,6 +461,7 @@ public final class CraftServer implements Server {
          if (type == PluginLoadOrder.STARTUP) {
              this.helpMap.clear();
              this.helpMap.initializeGeneralTopics();
@@ -27,7 +27,7 @@ index 8ebd605a35b16a07ed1d927ebc9308a56a497c40..a4fffd20b0617563a67d5b9980814a7d
          }
  
          Plugin[] plugins = this.pluginManager.getPlugins();
-@@ -473,7 +474,7 @@ public final class CraftServer implements Server {
+@@ -480,7 +481,7 @@ public final class CraftServer implements Server {
              this.commandMap.registerServerAliases();
              DefaultPermissions.registerCorePermissions();
              CraftDefaultPermissions.registerCorePermissions();

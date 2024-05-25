@@ -227,10 +227,10 @@ index 9e62aa13845f19faf0dc0b7b27d958626e77d96e..6f1c9fa89e718cbc01a8d72de34154f4
      }
  
 diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index 27b01f7ed930baab466a5e4f9608e9e1a4da0978..7cd1f375b9ad9e6d6f2d26661519f12be064a9d2 100644
+index d7c3719ea01d598d615b026f27ca7e478c61806d..d3bbfb02f18dd42e0efb048ff4dbc028d84d3297 100644
 --- a/src/main/java/org/spigotmc/SpigotConfig.java
 +++ b/src/main/java/org/spigotmc/SpigotConfig.java
-@@ -289,7 +289,7 @@ public class SpigotConfig
+@@ -295,7 +295,7 @@ public class SpigotConfig
      public static int playerSample;
      private static void playerSample()
      {
