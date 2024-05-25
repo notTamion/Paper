@@ -8283,3 +8283,20 @@ index 0c7c97f27853843ec714e47f5b570f9d09bbba14..ff422d4d4f2b764370f0ee2af1303485
          MONSTER,
          ANIMAL,
          RAIDER,
+diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
+index 0ab8825951125abe118efb4aebf47abcedd1f5f5..c498e87034bbdb0b7a1d6f6218d64880b92edcab 100644
+--- a/src/main/java/org/spigotmc/SpigotConfig.java
++++ b/src/main/java/org/spigotmc/SpigotConfig.java
+@@ -127,6 +127,12 @@ public class SpigotConfig
+             config.setDefaults(defaultConfig);
+         }
+         // Paper end - Configuration Presets
++
++        // Paper start
++        SpigotConfig.save();
++    }
++    public static void save() {
++        // Paper end
+         try
+         {
+             SpigotConfig.config.save( SpigotConfig.CONFIG_FILE );

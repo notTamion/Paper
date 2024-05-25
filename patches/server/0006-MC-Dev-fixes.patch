@@ -109,20 +109,3 @@ index 328888db50c7ef7cae8305a6aa19d1af9a8c880d..ac411202c0029052a962b51b015da191
          this.goalSelector.addGoal(3, new RangedCrossbowAttackGoal<>(this, 1.0D, 8.0F));
          this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.6D));
          this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 15.0F, 1.0F));
-diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index 0ab8825951125abe118efb4aebf47abcedd1f5f5..dd54560e6ec1fc29a544047402d91b7dfaa51147 100644
---- a/src/main/java/org/spigotmc/SpigotConfig.java
-+++ b/src/main/java/org/spigotmc/SpigotConfig.java
-@@ -127,6 +127,12 @@ public class SpigotConfig
-             config.setDefaults(defaultConfig);
-         }
-         // Paper end - Configuration Presets
-+        
-+        // Paper start
-+        SpigotConfig.save();
-+    }
-+    public static void save() {
-+        // Paper end
-         try
-         {
-             SpigotConfig.config.save( SpigotConfig.CONFIG_FILE );
