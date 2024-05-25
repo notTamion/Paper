@@ -27,10 +27,10 @@ index 68098dfe716e93aafcca4d8d5b5a81d8648b3654..2b7070e0cefa7cf0777df159693750fe
 +    }
  }
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index d6259deea018928e486a36f0b323c00f285c0e8b..a355f92ac9b562ceec1ed1173575098030e20da2 100644
+index 5ae7855a0e3d589a1e173585edbb6020aaa4466c..8fc0c4cce2f3e1f5825ca6dfdee4af17b1b06ee2 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
-@@ -182,6 +182,18 @@ public class Main {
+@@ -181,6 +181,18 @@ public class Main {
                  return;
              }
  

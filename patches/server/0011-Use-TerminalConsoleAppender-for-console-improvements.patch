@@ -396,7 +396,7 @@ index 0ff094a90bf471ce57a3054c7701dc3d67742d9d..50f4b77c83854932050cc543c7c2deea
  
          this.bans = new UserBanList(PlayerList.USERBANLIST_FILE);
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 92411f7d88123f51ad72f321c350e0d82956f681..70643b045ca080a1b39264d00f64d425d67339e1 100644
+index ebeb1c8abe55fc3b904486be66a0adb19f1f9589..76c22e6506f64143f9294cd3a1b3959553525298 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -42,7 +42,7 @@ import java.util.logging.Level;
@@ -408,7 +408,7 @@ index 92411f7d88123f51ad72f321c350e0d82956f681..70643b045ca080a1b39264d00f64d425
  import net.minecraft.advancements.AdvancementHolder;
  import net.minecraft.commands.CommandSourceStack;
  import net.minecraft.commands.Commands;
-@@ -1329,9 +1329,13 @@ public final class CraftServer implements Server {
+@@ -1328,9 +1328,13 @@ public final class CraftServer implements Server {
          return this.logger;
      }
  

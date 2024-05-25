@@ -122,10 +122,10 @@ index 0000000000000000000000000000000000000000..e3a5f1ec376319bdfda87fa27ae217bf
 +    }
 +}
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index d515f6b7d5f69866d2499cac0bdd723b048ea696..066c61c576a8a0d1ba3329262d47d48469256991 100644
+index 5241e381e26aadfc465ff142125e5b1aa40c5afd..3e584d562c5de03a0d48fb212ec8b5054d177710 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2133,6 +2133,13 @@ public final class CraftServer implements Server {
+@@ -2132,6 +2132,13 @@ public final class CraftServer implements Server {
          return this.console.console;
      }
  

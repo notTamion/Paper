@@ -39,10 +39,10 @@ index 0246db4a1f6eb168fa88260282311fee2ebb6014..ea04eb049e16d1027d15f9863d1fcd16
          Iterator iterator1 = this.players.iterator();
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 268870e5c7b8d7aba5d2acc3913969de768b4c51..f157790deb4af973a35a32d40d3ad084e75da9a4 100644
+index fd9f6a577e6236cd1cdea3023a87482640e0fd56..66e83c17655591138ebbeb27cc4f0da825b2e86d 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1147,6 +1147,18 @@ public final class CraftServer implements Server {
+@@ -1146,6 +1146,18 @@ public final class CraftServer implements Server {
          ReloadCommand.reload(this.console);
      }
  
@@ -61,7 +61,7 @@ index 268870e5c7b8d7aba5d2acc3913969de768b4c51..f157790deb4af973a35a32d40d3ad084
      private void loadIcon() {
          this.icon = new CraftIconCache(null);
          try {
-@@ -1526,6 +1538,13 @@ public final class CraftServer implements Server {
+@@ -1525,6 +1537,13 @@ public final class CraftServer implements Server {
  
      @Override
      public boolean addRecipe(Recipe recipe) {
@@ -75,7 +75,7 @@ index 268870e5c7b8d7aba5d2acc3913969de768b4c51..f157790deb4af973a35a32d40d3ad084
          CraftRecipe toAdd;
          if (recipe instanceof CraftRecipe) {
              toAdd = (CraftRecipe) recipe;
-@@ -1555,6 +1574,11 @@ public final class CraftServer implements Server {
+@@ -1554,6 +1573,11 @@ public final class CraftServer implements Server {
              }
          }
          toAdd.addToCraftingManager();
@@ -87,7 +87,7 @@ index 268870e5c7b8d7aba5d2acc3913969de768b4c51..f157790deb4af973a35a32d40d3ad084
          return true;
      }
  
-@@ -1735,10 +1759,23 @@ public final class CraftServer implements Server {
+@@ -1734,10 +1758,23 @@ public final class CraftServer implements Server {
  
      @Override
      public boolean removeRecipe(NamespacedKey recipeKey) {

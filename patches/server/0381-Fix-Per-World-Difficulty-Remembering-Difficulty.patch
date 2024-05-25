@@ -102,10 +102,10 @@ index 299a2e78f4a83d224038c80287636a5d6b9b7450..95d20facdc43a356fd2e82f5d597f52e
      }
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 4ec29ebac9f603db61010d9260810ab6e49972fb..fa794ac75d272b1ee7928ea23e195740dc59c6ee 100644
+index 0e77abee8d2c551d3662757b57866966c0c99acc..482b4e6debad2358d5e001126bdfb738e5786291 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -971,8 +971,8 @@ public final class CraftServer implements Server {
+@@ -970,8 +970,8 @@ public final class CraftServer implements Server {
          org.spigotmc.SpigotConfig.init((File) this.console.options.valueOf("spigot-settings")); // Spigot
          this.console.paperConfigurations.reloadConfigs(this.console);
          for (ServerLevel world : this.console.getAllLevels()) {

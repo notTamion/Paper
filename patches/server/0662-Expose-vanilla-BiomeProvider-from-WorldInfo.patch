@@ -18,10 +18,10 @@ index 2986dc458ddbd642669c6c2c104df2a2446e5b11..533e1225b863ef314b7defebc4787304
                  biomeProvider = gen.getDefaultBiomeProvider(worldInfo);
              }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 1e282679bc40758be82962284b55f8b468686f9d..d515f6b7d5f69866d2499cac0bdd723b048ea696 100644
+index c68d53540913ba62aa58034a4705922111700064..5241e381e26aadfc465ff142125e5b1aa40c5afd 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1279,7 +1279,7 @@ public final class CraftServer implements Server {
+@@ -1278,7 +1278,7 @@ public final class CraftServer implements Server {
          List<CustomSpawner> list = ImmutableList.of(new PhantomSpawner(), new PatrolSpawner(), new CatSpawner(), new VillageSiege(), new WanderingTraderSpawner(worlddata));
          LevelStem worlddimension = iregistry.get(actualDimension);
  

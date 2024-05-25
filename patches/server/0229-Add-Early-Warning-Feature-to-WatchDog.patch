@@ -33,10 +33,10 @@ index 0ffa25a6e41cc56e78c79e0cee45e3b811794129..1b47e228ad7365b31d6ddd8c572d3bc5
          com.destroystokyo.paper.Metrics.PaperMetrics.startMetrics(); // Paper - start metrics
          com.destroystokyo.paper.VersionHistoryManager.INSTANCE.getClass(); // Paper - load version history now
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 85e19328132d1c388534f44291d4f86d58315dd2..84779aa553c3eb938bd3a8a51d7ed4eee14ea8ab 100644
+index 017096bf37d900e2c322d6eb1bb5f5cff921e54d..54fce466cec7771357bc04aea4a70007c1aa8729 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -938,6 +938,7 @@ public final class CraftServer implements Server {
+@@ -937,6 +937,7 @@ public final class CraftServer implements Server {
  
      @Override
      public void reload() {
@@ -44,7 +44,7 @@ index 85e19328132d1c388534f44291d4f86d58315dd2..84779aa553c3eb938bd3a8a51d7ed4ee
          this.reloadCount++;
          this.configuration = YamlConfiguration.loadConfiguration(this.getConfigFile());
          this.commandsConfiguration = YamlConfiguration.loadConfiguration(this.getCommandsConfigFile());
-@@ -1028,6 +1029,7 @@ public final class CraftServer implements Server {
+@@ -1027,6 +1028,7 @@ public final class CraftServer implements Server {
          this.enablePlugins(PluginLoadOrder.POSTWORLD);
          if (io.papermc.paper.plugin.PluginInitializerManager.instance().pluginRemapper != null) io.papermc.paper.plugin.PluginInitializerManager.instance().pluginRemapper.pluginsEnabled(); // Paper - Remap plugins
          this.getPluginManager().callEvent(new ServerLoadEvent(ServerLoadEvent.LoadType.RELOAD));
@@ -53,7 +53,7 @@ index 85e19328132d1c388534f44291d4f86d58315dd2..84779aa553c3eb938bd3a8a51d7ed4ee
  
      @Override
 diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index f5800729411a6cb7102c68435dde506832086a19..de5e72376a626fd78300549347624ab692d0fa37 100644
+index b356411890d451a0eb4679470e6b1fe976df840f..019319056c6e91a79b28d0ac3ded0a6b0da68df7 100644
 --- a/src/main/java/org/spigotmc/SpigotConfig.java
 +++ b/src/main/java/org/spigotmc/SpigotConfig.java
 @@ -239,7 +239,7 @@ public class SpigotConfig

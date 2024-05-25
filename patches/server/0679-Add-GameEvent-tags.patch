@@ -46,10 +46,10 @@ index 0000000000000000000000000000000000000000..e7d9fd2702a1ce96596580fff8f5ee4f
 +    }
 +}
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 0ef15a30a01912aaadefd653cdae1885f8ba6587..b48929cdead40f5baf57bda181fcf4b4ba3dc269 100644
+index 5e816373b59255f1bb703a7fbb484722c825a5a6..8a34b50af50e01695580e404da8556a20300c098 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2738,6 +2738,15 @@ public final class CraftServer implements Server {
+@@ -2737,6 +2737,15 @@ public final class CraftServer implements Server {
                      return (org.bukkit.Tag<T>) new CraftEntityTag(BuiltInRegistries.ENTITY_TYPE, entityTagKey);
                  }
              }
@@ -65,7 +65,7 @@ index 0ef15a30a01912aaadefd653cdae1885f8ba6587..b48929cdead40f5baf57bda181fcf4b4
              default -> throw new IllegalArgumentException();
          }
  
-@@ -2770,6 +2779,13 @@ public final class CraftServer implements Server {
+@@ -2769,6 +2778,13 @@ public final class CraftServer implements Server {
                  net.minecraft.core.Registry<EntityType<?>> entityTags = BuiltInRegistries.ENTITY_TYPE;
                  return entityTags.getTags().map(pair -> (org.bukkit.Tag<T>) new CraftEntityTag(entityTags, pair.getFirst())).collect(ImmutableList.toImmutableList());
              }

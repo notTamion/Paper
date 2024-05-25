@@ -7751,10 +7751,10 @@ index 34933c5324126f9afdc5cba9dea997ace8f01806..219062cff8a05c765b092f1525043d9d
              return false;
          } else {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 69ff53908a6abed3f52dad6695d5082542f8debd..078de59245ded60e007775f3f87e105152a6f0bd 100644
+index ce8873405cd4714c644233d23842114e7f44777f..35f93c592ddc50784a91649cd517c4c450b2eb3a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2571,4 +2571,9 @@ public final class CraftServer implements Server {
+@@ -2570,4 +2570,9 @@ public final class CraftServer implements Server {
          return this.spigot;
      }
      // Spigot end

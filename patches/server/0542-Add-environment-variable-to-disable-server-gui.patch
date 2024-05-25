@@ -5,10 +5,10 @@ Subject: [PATCH] Add environment variable to disable server gui
 
 
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index b72e42bc6ed78d0ef6a1eaefa42187ed3a801ec4..d6259deea018928e486a36f0b323c00f285c0e8b 100644
+index f7ced4a7cd40f0eb6e0ec0e801dba97f6262fd12..5ae7855a0e3d589a1e173585edbb6020aaa4466c 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
-@@ -333,6 +333,7 @@ public class Main {
+@@ -332,6 +332,7 @@ public class Main {
                  */
                  boolean flag2 = !optionset.has("nogui") && !optionset.nonOptionArguments().contains("nogui");
  

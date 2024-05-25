@@ -15672,10 +15672,10 @@ index 0000000000000000000000000000000000000000..c78cbec447032de9fe69748591bef6be
 +    }
 +}
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index cab03c046fb66307517b138daebe03b3965c1727..e6b8e9828797a1d8f0e36f71f57afa32b893b53f 100644
+index abb82c2771401fd6f0947b6fe8006fac9be04871..99de314e7a61e6f9b7786d3f2ce10a575d51b5b7 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
-@@ -335,6 +335,7 @@ public class Main {
+@@ -334,6 +334,7 @@ public class Main {
  
              convertable_conversionsession.saveDataTag(iregistrycustom_dimension, savedata);
              */
@@ -21607,10 +21607,10 @@ index 7dae8d91b74cc7df0745f0c121e3bea09b8d0b6d..1e2530c9e5212b6d2bdbc94817beddb4
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 79a72026d8d4b15e0d92a2708ae76a94881caf31..7f87e735490521bbc10d6ce04a9e1b1abb7e5ad8 100644
+index e1e41a1750bd2586344d0cf6a3a4b1cc5fdcea0f..c41a7ddcab0d582f21007d732d0c27f89afaeb96 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1411,7 +1411,6 @@ public final class CraftServer implements Server {
+@@ -1410,7 +1410,6 @@ public final class CraftServer implements Server {
          // Paper - Put world into worldlist before initing the world; move up
  
          this.getServer().prepareLevels(internal.getChunkSource().chunkMap.progressListener, internal);
@@ -21618,7 +21618,7 @@ index 79a72026d8d4b15e0d92a2708ae76a94881caf31..7f87e735490521bbc10d6ce04a9e1b1a
  
          this.pluginManager.callEvent(new WorldLoadEvent(internal.getWorld()));
          return internal.getWorld();
-@@ -1456,7 +1455,7 @@ public final class CraftServer implements Server {
+@@ -1455,7 +1454,7 @@ public final class CraftServer implements Server {
              }
  
              handle.getChunkSource().close(save);
@@ -21627,7 +21627,7 @@ index 79a72026d8d4b15e0d92a2708ae76a94881caf31..7f87e735490521bbc10d6ce04a9e1b1a
              handle.convertable.close();
          } catch (Exception ex) {
              this.getLogger().log(Level.SEVERE, null, ex);
-@@ -2492,7 +2491,7 @@ public final class CraftServer implements Server {
+@@ -2491,7 +2490,7 @@ public final class CraftServer implements Server {
  
      @Override
      public boolean isPrimaryThread() {

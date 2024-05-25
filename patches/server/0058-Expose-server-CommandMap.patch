@@ -5,10 +5,10 @@ Subject: [PATCH] Expose server CommandMap
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 7069f3a09e3c324beb617247c26d649200e0ce2b..dc4106c1f46c844a8f6f0755e681e235c011660c 100644
+index 81bf140af7b4c8e466dd00f0f43e43f9e9883b84..b658ff270c8bf9a8ce119c71b4cab6d862092ec6 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2152,6 +2152,7 @@ public final class CraftServer implements Server {
+@@ -2151,6 +2151,7 @@ public final class CraftServer implements Server {
          return this.helpMap;
      }
  

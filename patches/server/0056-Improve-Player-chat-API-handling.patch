@@ -40,10 +40,10 @@ index b700cd5ccf37f3592f7cb931101397fbc59dc60f..ad598e57feb2d9db1b71cb3a432df222
          if ( org.spigotmc.SpigotConfig.logCommands ) // Spigot
          this.LOGGER.info(this.player.getScoreboardName() + " issued server command: " + s);
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 3b880fcd0a3f6339593729f513ea717dee3ec478..7069f3a09e3c324beb617247c26d649200e0ce2b 100644
+index 88dbf2098355f614f43299c5d5b80303d88c3b4a..81bf140af7b4c8e466dd00f0f43e43f9e9883b84 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -909,7 +909,7 @@ public final class CraftServer implements Server {
+@@ -908,7 +908,7 @@ public final class CraftServer implements Server {
      public boolean dispatchCommand(CommandSender sender, String commandLine) {
          Preconditions.checkArgument(sender != null, "sender cannot be null");
          Preconditions.checkArgument(commandLine != null, "commandLine cannot be null");

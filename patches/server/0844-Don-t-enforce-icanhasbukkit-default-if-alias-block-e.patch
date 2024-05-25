@@ -5,10 +5,10 @@ Subject: [PATCH] Don't enforce icanhasbukkit default if alias block exists
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index da4395a27ba28447f03293fd60b1b1ebc167715c..558aa238397bd95879e39eba5a2aa71dac5b42bc 100644
+index f7f1c69df128e723021c8c0bf18513c7be0fd4fe..45ceeda2d3add50b337c8a40f8d4a0893018dd72 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -359,7 +359,11 @@ public final class CraftServer implements Server {
+@@ -358,7 +358,11 @@ public final class CraftServer implements Server {
          }
          this.commandsConfiguration = YamlConfiguration.loadConfiguration(this.getCommandsConfigFile());
          this.commandsConfiguration.options().copyDefaults(true);
