@@ -2323,7 +2323,7 @@ index 3faf80fca51d66480265eaf3cc89149e53ceb215..b9b3277c8ed94e0cd30b20b9c00a33ea
      // CraftBukkit end
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index a1dea00ac2a39c24fb3999c5ac8d9f89c6e90e19..cf7327ef86022b5229c63ae0c6853ffdcf45c9b7 100644
+index 70bd697b1da3f6bf2024cf0ee68ff973c1c59d34..965b80f7fa8e4112ae3f8444659876dfa3dcbab9 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -270,11 +270,11 @@ public final class CraftServer implements Server {
@@ -2354,7 +2354,7 @@ index a1dea00ac2a39c24fb3999c5ac8d9f89c6e90e19..cf7327ef86022b5229c63ae0c6853ffd
  
          CraftRegistry.setMinecraftRegistry(console.registryAccess());
  
-@@ -576,48 +582,11 @@ public final class CraftServer implements Server {
+@@ -580,48 +586,11 @@ public final class CraftServer implements Server {
      }
  
      private void setVanillaCommands(boolean first) { // Spigot
@@ -2405,7 +2405,7 @@ index a1dea00ac2a39c24fb3999c5ac8d9f89c6e90e19..cf7327ef86022b5229c63ae0c6853ffd
  
          // Refresh commands
          for (ServerPlayer player : this.getHandle().players) {
-@@ -1004,17 +973,31 @@ public final class CraftServer implements Server {
+@@ -1008,17 +977,31 @@ public final class CraftServer implements Server {
              return true;
          }
  
@@ -2447,7 +2447,7 @@ index a1dea00ac2a39c24fb3999c5ac8d9f89c6e90e19..cf7327ef86022b5229c63ae0c6853ffd
  
          return false;
      }
-@@ -1023,7 +1006,7 @@ public final class CraftServer implements Server {
+@@ -1027,7 +1010,7 @@ public final class CraftServer implements Server {
      public void reload() {
          // Paper start - lifecycle events
          if (io.papermc.paper.plugin.lifecycle.event.LifecycleEventRunner.INSTANCE.blocksPluginReloading()) {
@@ -2456,7 +2456,7 @@ index a1dea00ac2a39c24fb3999c5ac8d9f89c6e90e19..cf7327ef86022b5229c63ae0c6853ffd
          }
          // Paper end - lifecycle events
          org.spigotmc.WatchdogThread.hasStarted = false; // Paper - Disable watchdog early timeout on reload
-@@ -1076,8 +1059,9 @@ public final class CraftServer implements Server {
+@@ -1080,8 +1063,9 @@ public final class CraftServer implements Server {
          }
  
          Plugin[] pluginClone = pluginManager.getPlugins().clone(); // Paper
@@ -2467,7 +2467,7 @@ index a1dea00ac2a39c24fb3999c5ac8d9f89c6e90e19..cf7327ef86022b5229c63ae0c6853ffd
          // Paper start
          for (Plugin plugin : pluginClone) {
              entityMetadata.removeAll(plugin);
-@@ -1117,6 +1101,12 @@ public final class CraftServer implements Server {
+@@ -1121,6 +1105,12 @@ public final class CraftServer implements Server {
          this.enablePlugins(PluginLoadOrder.STARTUP);
          this.enablePlugins(PluginLoadOrder.POSTWORLD);
          if (io.papermc.paper.plugin.PluginInitializerManager.instance().pluginRemapper != null) io.papermc.paper.plugin.PluginInitializerManager.instance().pluginRemapper.pluginsEnabled(); // Paper - Remap plugins

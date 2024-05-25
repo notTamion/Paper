@@ -6,10 +6,10 @@ Subject: [PATCH] Fix saving in unloadWorld
 Change savingDisabled to false to ensure ServerLevel's saving logic gets called when unloadWorld is called with save = true
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index cc79b0221ed9d0aa6b59e3cc927b3e9682fc891d..13dcc0ff90385bf3b50ead2342a6fd4a9f41666b 100644
+index d558111ccb5f50e304053d52f4f40be3b0d5c2dd..6ca3a9ca289d6dfe7c64dbfa38a2cb8b35f10f38 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1353,7 +1353,7 @@ public final class CraftServer implements Server {
+@@ -1357,7 +1357,7 @@ public final class CraftServer implements Server {
  
          try {
              if (save) {

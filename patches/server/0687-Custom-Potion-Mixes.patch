@@ -282,7 +282,7 @@ index 3ebfd564d4bbf00da5919e966f3d047285845640..887957ce1ddc2f32569405642f35df46
      }
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index b9e551a237422091bb345e2361c5e0b42215a843..cc79b0221ed9d0aa6b59e3cc927b3e9682fc891d 100644
+index 1c8d53ab54b816d21613e9d2044f38f216f6f7fa..d558111ccb5f50e304053d52f4f40be3b0d5c2dd 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -304,6 +304,7 @@ public final class CraftServer implements Server {
@@ -293,7 +293,7 @@ index b9e551a237422091bb345e2361c5e0b42215a843..cc79b0221ed9d0aa6b59e3cc927b3e96
  
      static {
          ConfigurationSerialization.registerClass(CraftOfflinePlayer.class);
-@@ -393,6 +394,7 @@ public final class CraftServer implements Server {
+@@ -397,6 +398,7 @@ public final class CraftServer implements Server {
          if (this.configuration.getBoolean("settings.use-map-color-cache")) {
              MapPalette.setMapColorCache(new CraftMapColorCache(this.logger));
          }
@@ -301,7 +301,7 @@ index b9e551a237422091bb345e2361c5e0b42215a843..cc79b0221ed9d0aa6b59e3cc927b3e96
          datapackManager = new io.papermc.paper.datapack.PaperDatapackManager(console.getPackRepository()); // Paper
      }
  
-@@ -3100,5 +3102,9 @@ public final class CraftServer implements Server {
+@@ -3104,5 +3106,9 @@ public final class CraftServer implements Server {
          return datapackManager;
      }
  

@@ -7236,7 +7236,7 @@ index 15ee2f2a83bfef2f6891d9bfb2d3a8c14b24ffb1..26892378d27dadce25c178333188ba09
                      Bootstrap.wrapStreams();
                      Bootstrap.bootstrapDuration.set(Duration.between(instant, Instant.now()).toMillis());
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index 91b5e51c4a31689c0c17fe23bc9823998379c03a..5ea4bca5538823ff907dfa8a0f243b6d206597d8 100644
+index 76e5a71b465a58570f8703f288a21ce7fd38246c..fc2f1bb4356969b2d0b43fff22e3f02d9d9da389 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
 @@ -119,6 +119,7 @@ public class Main {
@@ -7248,7 +7248,7 @@ index 91b5e51c4a31689c0c17fe23bc9823998379c03a..5ea4bca5538823ff907dfa8a0f243b6d
              Bootstrap.validate();
              Util.startTimerHackThread();
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 602e393d3d29a31cfc925baebe69b1dc1fa6941c..74650fb1dc5fcee48d9f7face6642ea619aab9ab 100644
+index b45e7e092355b0b73d61d5e340158c2c432fce58..1031bb69247137db2a60db3c062a8989a9eceb59 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -275,7 +275,8 @@ public final class CraftServer implements Server {
@@ -7261,7 +7261,7 @@ index 602e393d3d29a31cfc925baebe69b1dc1fa6941c..74650fb1dc5fcee48d9f7face6642ea6
      private final StructureManager structureManager;
      protected final DedicatedServer console;
      protected final DedicatedPlayerList playerList;
-@@ -429,24 +430,7 @@ public final class CraftServer implements Server {
+@@ -433,24 +434,7 @@ public final class CraftServer implements Server {
      }
  
      public void loadPlugins() {
@@ -7287,7 +7287,7 @@ index 602e393d3d29a31cfc925baebe69b1dc1fa6941c..74650fb1dc5fcee48d9f7face6642ea6
      }
  
      public void enablePlugins(PluginLoadOrder type) {
-@@ -535,15 +519,17 @@ public final class CraftServer implements Server {
+@@ -539,15 +523,17 @@ public final class CraftServer implements Server {
      private void enablePlugin(Plugin plugin) {
          try {
              List<Permission> perms = plugin.getDescription().getPermissions();
@@ -7311,7 +7311,7 @@ index 602e393d3d29a31cfc925baebe69b1dc1fa6941c..74650fb1dc5fcee48d9f7face6642ea6
  
              this.pluginManager.enablePlugin(plugin);
          } catch (Throwable ex) {
-@@ -984,6 +970,7 @@ public final class CraftServer implements Server {
+@@ -988,6 +974,7 @@ public final class CraftServer implements Server {
                  "This plugin is not properly shutting down its async tasks when it is being reloaded.  This may cause conflicts with the newly loaded version of the plugin"
              ));
          }

@@ -146,10 +146,10 @@ index 37b3460fab8cdfe841af20d960d5740a8f875150..dee319882d7d51a0e03e0f5f31ab6312
                  this.startMetricsRecordingTick();
                  this.profiler.push("tick");
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index d22c331c765b497f2686ed10e01f62af68005175..54e0c8a58759a47c6784983a15adae6b21f88390 100644
+index 96d4a6d35c307e174d4e7954aead8a6debbe474a..d2660d660816ca5879647be98599f1f7ef81e5f4 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2642,7 +2642,11 @@ public final class CraftServer implements Server {
+@@ -2646,7 +2646,11 @@ public final class CraftServer implements Server {
  
      @Override
      public double[] getTPS() {

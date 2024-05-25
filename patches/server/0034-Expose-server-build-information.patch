@@ -11,7 +11,7 @@ Co-authored-by: Jake Potrebic <jake.m.potrebic@gmail.com>
 Co-authored-by: masmc05 <masmc05@gmail.com>
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index ea2532802295962fd90df69b6e94ded4af2f3d64..31d457fe76d457fe2f74cc7afd8ade5b69dd06c9 100644
+index 7b701fae8c7f93aa9ede73836dd467fa32bf3171..d017105c9f6a846c65598d0370805a352509c755 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -1,4 +1,5 @@
@@ -529,7 +529,7 @@ index f077b8ff0bf0d96628db3569132696b68fd79921..5f11f5b16766f9d1d5640ae037e259be
              value.append("\n   Plugins: {");
              for (Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 369d51c76b85e2aefe9abce0f8d9b40d964f4888..88dbf2098355f614f43299c5d5b80303d88c3b4a 100644
+index 2dd5e6349cec2be7cd0d556f7edcb736f4352bf5..1fd3b1aa15cddd2a2294658f48f6cfe4c4e83f51 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -10,8 +10,6 @@ import com.google.common.collect.MapMaker;
@@ -583,7 +583,7 @@ index 369d51c76b85e2aefe9abce0f8d9b40d964f4888..88dbf2098355f614f43299c5d5b80303
          this.structureManager = new CraftStructureManager(console.getStructureManager(), console.registryAccess());
          this.dataPackManager = new CraftDataPackManager(this.getServer().getPackRepository());
          this.serverTickManager = new CraftServerTickManager(console.tickRateManager());
-@@ -581,6 +576,13 @@ public final class CraftServer implements Server {
+@@ -585,6 +580,13 @@ public final class CraftServer implements Server {
          return this.bukkitVersion;
      }
  

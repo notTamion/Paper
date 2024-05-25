@@ -5,10 +5,10 @@ Subject: [PATCH] Don't log debug logging being disabled
 
 
 diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index de5e72376a626fd78300549347624ab692d0fa37..5fca3657d7507bd33999fbf919568f6a07d0bb90 100644
+index 2729119964acf4659dd378721a77a5564c2f011e..bfc0a3704eb6906481c35c942d04e8d80b0f73d4 100644
 --- a/src/main/java/org/spigotmc/SpigotConfig.java
 +++ b/src/main/java/org/spigotmc/SpigotConfig.java
-@@ -392,7 +392,7 @@ public class SpigotConfig
+@@ -396,7 +396,7 @@ public class SpigotConfig
              Bukkit.getLogger().info( "Debug logging is enabled" );
          } else
          {

@@ -22,10 +22,10 @@ wants it to collect even faster, they can restore that setting back to 1 instead
 Not adding it to .getType() though to keep behavior consistent with vanilla for performance reasons.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 482b4e6debad2358d5e001126bdfb738e5786291..10cb146c7b362c03106c81d199c4e0ab58594d49 100644
+index daf333a66607cc66e7f6dad83d031e1fb8ef353e..0b3e0508e7458f9f64afc8d00cf3113518315ef1 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -383,7 +383,7 @@ public final class CraftServer implements Server {
+@@ -387,7 +387,7 @@ public final class CraftServer implements Server {
          this.overrideSpawnLimits();
          console.autosavePeriod = this.configuration.getInt("ticks-per.autosave");
          this.warningState = WarningState.value(this.configuration.getString("settings.deprecated-verbose"));
@@ -34,7 +34,7 @@ index 482b4e6debad2358d5e001126bdfb738e5786291..10cb146c7b362c03106c81d199c4e0ab
          this.minimumAPI = ApiVersion.getOrCreateVersion(this.configuration.getString("settings.minimum-api"));
          this.loadIcon();
  
-@@ -950,7 +950,7 @@ public final class CraftServer implements Server {
+@@ -954,7 +954,7 @@ public final class CraftServer implements Server {
          this.console.setMotd(config.motd);
          this.overrideSpawnLimits();
          this.warningState = WarningState.value(this.configuration.getString("settings.deprecated-verbose"));

@@ -6,10 +6,10 @@ Subject: [PATCH] Add missing Validate calls to CraftServer#getSpawnLimit
 Copies appropriate checks from CraftWorld#getSpawnLimit
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 3e584d562c5de03a0d48fb212ec8b5054d177710..5e816373b59255f1bb703a7fbb484722c825a5a6 100644
+index 5274d5c47e0df7cf57beb982f617016eea4e30f1..3104ddb35ad8855172c91db7918cf2ce92e6849b 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2309,6 +2309,8 @@ public final class CraftServer implements Server {
+@@ -2313,6 +2313,8 @@ public final class CraftServer implements Server {
      @Override
      public int getSpawnLimit(SpawnCategory spawnCategory) {
          // Paper start - Add mobcaps commands

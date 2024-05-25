@@ -23,10 +23,10 @@ index b72b5fb2fa1d372f914ad1084e43b21b14f4fffb..f9a4b5558bacff9c478f407c2656cb08
  
              if (worlddata.getCustomBossEvents() != null) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 8a34b50af50e01695580e404da8556a20300c098..b9e551a237422091bb345e2361c5e0b42215a843 100644
+index 127ce48d79e6a6c58b8bfd60e732a45c86a90c18..1c8d53ab54b816d21613e9d2044f38f216f6f7fa 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1304,10 +1304,11 @@ public final class CraftServer implements Server {
+@@ -1308,10 +1308,11 @@ public final class CraftServer implements Server {
              return null;
          }
  

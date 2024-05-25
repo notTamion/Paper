@@ -92,7 +92,7 @@ index 0000000000000000000000000000000000000000..cf4374493c11057451a62a655514415c
 +    }
 +}
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 6437d9d804e237029f1122ac71ecf9999ef0066d..0406829fef1f1c39b30df31ed0c21784314507eb 100644
+index f6e5b1af8243ffed552d0ea5335773b8b717811d..6186088b2f1fbabbbe5cb3090399a7b2fc347891 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -301,6 +301,7 @@ public final class CraftServer implements Server {
@@ -103,7 +103,7 @@ index 6437d9d804e237029f1122ac71ecf9999ef0066d..0406829fef1f1c39b30df31ed0c21784
      public static Exception excessiveVelEx; // Paper - Velocity warnings
  
      static {
-@@ -391,6 +392,7 @@ public final class CraftServer implements Server {
+@@ -395,6 +396,7 @@ public final class CraftServer implements Server {
          if (this.configuration.getBoolean("settings.use-map-color-cache")) {
              MapPalette.setMapColorCache(new CraftMapColorCache(this.logger));
          }
@@ -111,7 +111,7 @@ index 6437d9d804e237029f1122ac71ecf9999ef0066d..0406829fef1f1c39b30df31ed0c21784
      }
  
      public boolean getCommandBlockOverride(String command) {
-@@ -2976,5 +2978,11 @@ public final class CraftServer implements Server {
+@@ -2980,5 +2982,11 @@ public final class CraftServer implements Server {
      public com.destroystokyo.paper.entity.ai.MobGoals getMobGoals() {
          return mobGoals;
      }

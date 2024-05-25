@@ -5,10 +5,10 @@ Subject: [PATCH] WorldCreator#keepSpawnLoaded
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 13dcc0ff90385bf3b50ead2342a6fd4a9f41666b..fbf326c6547c2073d7860328618930b8768302d1 100644
+index 6ca3a9ca289d6dfe7c64dbfa38a2cb8b35f10f38..c9d1985a550efac0d06bc652909b316b3eb98e88 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1296,7 +1296,7 @@ public final class CraftServer implements Server {
+@@ -1300,7 +1300,7 @@ public final class CraftServer implements Server {
          }
  
          // If set to not keep spawn in memory (changed from default) then adjust rule accordingly

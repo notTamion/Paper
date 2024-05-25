@@ -6,10 +6,10 @@ Subject: [PATCH] Expose MinecraftServer#isRunning
 This allows for plugins to detect if the server is actually turning off in onDisable rather than just plugins reloading.
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 34359da4ef5a4d786b582e37f9840316167b2201..e8ab66346944e395b5261ee8cec9c5424e87d6d5 100644
+index d2fde55d2cf4905e9ce9350a23b17f653c68125f..085de3591e6d01d98a9af715b47309429cbec292 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2902,5 +2902,10 @@ public final class CraftServer implements Server {
+@@ -2906,5 +2906,10 @@ public final class CraftServer implements Server {
      public int getCurrentTick() {
          return net.minecraft.server.MinecraftServer.currentTick;
      }

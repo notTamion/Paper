@@ -15,7 +15,7 @@ This may cause additional prefixes to be disabled for plugins bypassing
 the plugin logger.
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index a96a8af987a1bb2e9b4510afab72aa9d99a8629f..52383284373d9cb0202ed758f312166ab1367dc1 100644
+index 8bd13a7f220d809641e1b1c7474447de2806c0fb..786ca2339c90b00732c7de9c196285ce74bcbf45 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -23,7 +23,7 @@ dependencies {
@@ -28,10 +28,10 @@ index a96a8af987a1bb2e9b4510afab72aa9d99a8629f..52383284373d9cb0202ed758f312166a
      runtimeOnly(log4jPlugins.output)
      alsoShade(log4jPlugins.output)
 diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index dd54560e6ec1fc29a544047402d91b7dfaa51147..27ec0fb73fe06b8fea23a5a16049b796fa8e1e1d 100644
+index de14376f109941ca176b2ed9c7e508f926d9d9a4..51e76eb80e52f651eef678c0a1cf100a54a7876f 100644
 --- a/src/main/java/org/spigotmc/SpigotConfig.java
 +++ b/src/main/java/org/spigotmc/SpigotConfig.java
-@@ -298,7 +298,7 @@ public class SpigotConfig
+@@ -302,7 +302,7 @@ public class SpigotConfig
      private static void playerSample()
      {
          SpigotConfig.playerSample = SpigotConfig.getInt( "settings.sample-count", 12 );

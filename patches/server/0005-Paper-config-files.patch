@@ -15,7 +15,7 @@ public net.minecraft.server.dedicated.DedicatedServerProperties reload(Lnet/mine
 public net.minecraft.world.level.NaturalSpawner SPAWNING_CATEGORIES
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 2f73e709dcde063ec7ca2181f2f2d5670fd479f5..0dcd2f08798e852a2e23e7438829a8dd491c4169 100644
+index 2f73e709dcde063ec7ca2181f2f2d5670fd479f5..5b0a4a732cda15abe00109565048e4fcd3642ecb 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -10,6 +10,7 @@ dependencies {
@@ -26,11 +26,12 @@ index 2f73e709dcde063ec7ca2181f2f2d5670fd479f5..0dcd2f08798e852a2e23e7438829a8dd
      implementation("commons-lang:commons-lang:2.6")
      runtimeOnly("org.xerial:sqlite-jdbc:3.45.3.0")
      runtimeOnly("com.mysql:mysql-connector-j:8.3.0")
-@@ -107,6 +108,7 @@ fun TaskContainer.registerRunTask(
+@@ -107,6 +108,8 @@ fun TaskContainer.registerRunTask(
  
      args("--nogui")
      systemProperty("net.kyori.adventure.text.warnWhenLegacyFormattingDetected", true)
-+    systemProperty("paper.configurationPreset", "vanilla")
++    systemProperty("paper.configurationPreset", "vanilla") // Remove on Merge
++    // systemProperty("paper.forceConfigurationPreset", "true") // Remove on Merge
      if (providers.gradleProperty("paper.runDisableWatchdog").getOrElse("false") == "true") {
          systemProperty("disable.watchdog", true)
      }
@@ -129,10 +130,10 @@ index 0000000000000000000000000000000000000000..042478cf7ce150f1f1bc5cddd7fa40f8
 +}
 diff --git a/src/main/java/io/papermc/paper/configuration/Configurations.java b/src/main/java/io/papermc/paper/configuration/Configurations.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..65ad95fd2e8506cbfc653029435d49d1e0b0dda3
+index 0000000000000000000000000000000000000000..9aab5af79f30b6c99183aecc09f95612991db5e4
 --- /dev/null
 +++ b/src/main/java/io/papermc/paper/configuration/Configurations.java
-@@ -0,0 +1,377 @@
+@@ -0,0 +1,382 @@
 +package io.papermc.paper.configuration;
 +
 +import com.google.common.base.Preconditions;
@@ -263,7 +264,7 @@ index 0000000000000000000000000000000000000000..65ad95fd2e8506cbfc653029435d49d1
 +            .defaultOptions(this.applyObjectMapperFactory(this.createGlobalObjectMapperFactoryBuilder().build()))
 +            .path(configFile)
 +            .build();
-+        final ConfigurationNode node;
++        ConfigurationNode node;
 +        if (Files.notExists(configFile)) {
 +            node = CommentedConfigurationNode.root(loader.defaultOptions());
 +            node.node(Configuration.VERSION_FIELD).raw(this.globalConfigVersion());
@@ -272,13 +273,7 @@ index 0000000000000000000000000000000000000000..65ad95fd2e8506cbfc653029435d49d1
 +            this.verifyGlobalConfigVersion(node);
 +        }
 +        this.applyGlobalConfigTransformations(node);
-+        if (CONFIGURATION_PRESET != null && this.getClass().getClassLoader().getResource("configurations/presets/" + CONFIGURATION_PRESET + "/paper-global.yml") != null) {
-+            try {
-+                node.mergeFrom(YamlConfigurationLoader.builder().path(Path.of(this.getClass().getClassLoader().getResource("configurations/presets/" + CONFIGURATION_PRESET + "/paper-global.yml").toURI())).build().load());
-+            } catch (URISyntaxException e) {
-+                throw new RuntimeException(e);
-+            }
-+        }
++        this.applyConfigurationPreset(node, globalConfigFileName);
 +        final G instance = creator.apply(node);
 +        trySaveFileNode(loader, node, configFile.toString());
 +        return instance;
@@ -312,20 +307,14 @@ index 0000000000000000000000000000000000000000..65ad95fd2e8506cbfc653029435d49d1
 +        final Path configFile = this.globalFolder.resolve(this.defaultWorldConfigFileName);
 +        final DefaultWorldLoader result = this.createDefaultWorldLoader(false, contextMap, configFile);
 +        final YamlConfigurationLoader loader = result.loader();
-+        final ConfigurationNode node = loader.load();
++        ConfigurationNode node = loader.load();
 +        if (result.isNewFile()) { // add version to new files
 +            node.node(Configuration.VERSION_FIELD).raw(this.worldConfigVersion());
 +        } else {
 +            this.verifyWorldConfigVersion(contextMap, node);
 +        }
 +        this.applyWorldConfigTransformations(contextMap, node, null);
-+        if (CONFIGURATION_PRESET != null && this.getClass().getClassLoader().getResource("configurations/presets/" + CONFIGURATION_PRESET + "/paper-world-defaults.yml") != null) {
-+            try {
-+                node.mergeFrom(YamlConfigurationLoader.builder().path(Path.of(this.getClass().getClassLoader().getResource("configurations/presets/" + CONFIGURATION_PRESET + "/paper-world-defaults.yml").toURI())).build().load());
-+            } catch (URISyntaxException e) {
-+                throw new RuntimeException(e);
-+            }
-+        }
++        this.applyConfigurationPreset(node, defaultWorldConfigFileName);
 +        final W instance = node.require(this.worldConfigClass);
 +        node.set(this.worldConfigClass, instance);
 +        this.trySaveFileNode(loader, node, configFile.toString());
@@ -419,6 +408,23 @@ index 0000000000000000000000000000000000000000..65ad95fd2e8506cbfc653029435d49d1
 +    }
 +
 +    protected void applyDefaultsAwareWorldConfigTransformations(final ContextMap contextMap, final ConfigurationNode worldNode, final ConfigurationNode defaultsNode) throws ConfigurateException {
++    }
++
++    protected void applyConfigurationPreset(final ConfigurationNode node, final String fileName) throws ConfigurateException {
++        if (CONFIGURATION_PRESET == null)
++            return;
++        URL presetURL = this.getClass().getClassLoader().getResource("configurations/presets/" + CONFIGURATION_PRESET + "/" + fileName);
++        if (presetURL == null)
++            return;
++        try {
++            if (System.getProperty("paper.forceConfigurationPreset") == null) {
++                node.mergeFrom(YamlConfigurationLoader.builder().path(Path.of(presetURL.toURI())).build().load());
++            } else {
++                node.set(YamlConfigurationLoader.builder().path(Path.of(presetURL.toURI())).build().load().mergeFrom(node));
++            }
++        } catch (URISyntaxException e) {
++            throw new RuntimeException(e);
++        }
 +    }
 +
 +    private UnaryOperator<ConfigurationOptions> applyObjectMapperFactory(final ObjectMapper.Factory factory) {
@@ -4912,10 +4918,10 @@ index 0000000000000000000000000000000000000000..614aba60bb07946a144650fd3aedb316
 +    protected abstract boolean belowZero(O value);
 +}
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index b334265d4015fec13d7fedbffba2b6c22f4c8bc8..91b5e51c4a31689c0c17fe23bc9823998379c03a 100644
+index b334265d4015fec13d7fedbffba2b6c22f4c8bc8..76e5a71b465a58570f8703f288a21ce7fd38246c 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
-@@ -130,12 +130,30 @@ public class Main {
+@@ -130,12 +130,34 @@ public class Main {
              Path path2 = Paths.get("eula.txt");
              Eula eula = new Eula(path2);
  
@@ -4938,15 +4944,19 @@ index b334265d4015fec13d7fedbffba2b6c22f4c8bc8..91b5e51c4a31689c0c17fe23bc982399
                  configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/bukkit.yml"), Charsets.UTF_8)));
 +                // Paper start - Configuration Presets
 +                if (configurationPreset != null && Main.class.getClassLoader().getResource("configurations/presets/" + configurationPreset + "/bukkit.yml") != null) {
-+                    YamlConfiguration presetConfiguration = YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/presets/" + configurationPreset + "/bukkit.yml"), Charsets.UTF_8));
-+                    presetConfiguration.setDefaults(configuration.getDefaults());
-+                    configuration.setDefaults(presetConfiguration);
++                    YamlConfiguration presetConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/presets/" + configurationPreset + "/bukkit.yml"), Charsets.UTF_8));
++                    configuration.addDefaults(presetConfig);
++                    if (System.getProperty("paper.forceConfigurationPreset") != null)
++                        presetConfig.getValues(true).forEach((s, o) -> {
++                            if (!(o instanceof org.bukkit.configuration.ConfigurationSection))
++                                configuration.set(s, o);
++                        });
 +                }
 +                // Paper end - Configuration Presets
                  configuration.save(configFile);
  
                  File commandFile = (File) optionset.valueOf("commands-settings");
-@@ -163,7 +181,7 @@ public class Main {
+@@ -163,7 +185,7 @@ public class Main {
              }
  
              File file = (File) optionset.valueOf("universe"); // CraftBukkit
@@ -5084,27 +5094,31 @@ index ecbb926986bbc0ad6fe108b782cdc17ee8a9f035..b06ffa8d5953c8f0a47daf056495cd42
          this.world = new CraftWorld((ServerLevel) this, gen, biomeProvider, env);
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 3d80f58524861ad808caa35964676f0561b25547..479ba47380bca82f7ee09764469e2616161d22a2 100644
+index 3d80f58524861ad808caa35964676f0561b25547..90903e0f6ab144fb259beeb88dce9269e213cdc0 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -334,7 +334,15 @@ public final class CraftServer implements Server {
+@@ -334,7 +334,19 @@ public final class CraftServer implements Server {
  
          this.configuration = YamlConfiguration.loadConfiguration(this.getConfigFile());
          this.configuration.options().copyDefaults(true);
 -        this.configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("configurations/bukkit.yml"), Charsets.UTF_8)));
-+        configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/bukkit.yml"), Charsets.UTF_8)));
++        configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("configurations/bukkit.yml"), Charsets.UTF_8)));
 +        // Paper start - Configuration Presets
 +        String configurationPreset = System.getProperty("paper.configurationPreset");
-+        if (configurationPreset != null && Main.class.getClassLoader().getResource("configurations/presets" + configurationPreset + "/bukkit.yml") != null) {
-+            YamlConfiguration presetConfiguration = YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/presets/" + configurationPreset + "/bukkit.yml"), Charsets.UTF_8));
-+            presetConfiguration.setDefaults(configuration.getDefaults());
-+            configuration.setDefaults(presetConfiguration);
++        if (configurationPreset != null && Main.class.getClassLoader().getResource("configurations/presets/" + configurationPreset + "/bukkit.yml") != null) {
++            YamlConfiguration presetConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/presets/" + configurationPreset + "/bukkit.yml"), Charsets.UTF_8));
++            configuration.addDefaults(presetConfig);
++            if (System.getProperty("paper.forceConfigurationPreset") != null)
++                presetConfig.getValues(true).forEach((s, o) -> {
++                    if (!(o instanceof ConfigurationSection))
++                        configuration.set(s, o);
++                });
 +        }
 +        // Paper end - Configuration Presets
          ConfigurationSection legacyAlias = null;
          if (!this.configuration.isString("aliases")) {
              legacyAlias = this.configuration.getConfigurationSection("aliases");
-@@ -928,6 +936,7 @@ public final class CraftServer implements Server {
+@@ -928,6 +940,7 @@ public final class CraftServer implements Server {
          }
  
          org.spigotmc.SpigotConfig.init((File) this.console.options.valueOf("spigot-settings")); // Spigot
@@ -5137,7 +5151,7 @@ index 4b8602b168f9dd386aa72b4e5d189c441c93542e..1e3ca7ca98abfd5be233a7eeb6dad201
          };
  
 diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index 9658f2961d9b5632ad1abdba26a2443642624f69..0ab8825951125abe118efb4aebf47abcedd1f5f5 100644
+index 9658f2961d9b5632ad1abdba26a2443642624f69..a0b1606219a72fb70bdb3ba4eae8c4e93c2e10d6 100644
 --- a/src/main/java/org/spigotmc/SpigotConfig.java
 +++ b/src/main/java/org/spigotmc/SpigotConfig.java
 @@ -96,7 +96,7 @@ public class SpigotConfig
@@ -5149,16 +5163,20 @@ index 9658f2961d9b5632ad1abdba26a2443642624f69..0ab8825951125abe118efb4aebf47abc
      {
          for ( Method method : clazz.getDeclaredMethods() )
          {
-@@ -119,6 +119,14 @@ public class SpigotConfig
+@@ -119,6 +119,18 @@ public class SpigotConfig
              }
          }
  
 +        // Paper start - Configuration Presets
 +        String configurationPreset = System.getProperty("paper.configurationPreset");
 +        if (configurationPreset != null && SpigotConfig.class.getClassLoader().getResource("configurations/presets/" + configurationPreset + "/spigot.yml") != null) {
-+            YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new java.io.InputStreamReader(SpigotConfig.class.getClassLoader().getResourceAsStream("configurations/presets/" + configurationPreset + "/spigot.yml"), com.google.common.base.Charsets.UTF_8));
-+            defaultConfig.setDefaults(config.getDefaults());
-+            config.setDefaults(defaultConfig);
++            YamlConfiguration presetConfig = YamlConfiguration.loadConfiguration(new java.io.InputStreamReader(SpigotConfig.class.getClassLoader().getResourceAsStream("configurations/presets/" + configurationPreset + "/spigot.yml"), com.google.common.base.Charsets.UTF_8));
++            config.addDefaults(presetConfig);
++            if (System.getProperty("paper.forceConfigurationPreset") != null)
++                presetConfig.getValues(true).forEach((s, o) -> {
++                    if (!(o instanceof ConfigurationSection))
++                        config.set(s, o);
++                });
 +        }
 +        // Paper end - Configuration Presets
          try
@@ -5185,19 +5203,25 @@ index 974e679ff20193f85fccb6e779a7ba791d0c5db4..8491ff48051224204b58d273c4971d16
      }
  
      public <T> List getList(String path, T def)
+diff --git a/src/main/resources/configurations/presets/vanilla/bukkit.yml b/src/main/resources/configurations/presets/vanilla/bukkit.yml
+new file mode 100644
+index 0000000000000000000000000000000000000000..22f9c8a3d8282162dc4a9eb672f01b81dafb4e2d
+--- /dev/null
++++ b/src/main/resources/configurations/presets/vanilla/bukkit.yml
+@@ -0,0 +1,2 @@
++settings:
++  shutdown-message: Server shutdown
 diff --git a/src/main/resources/configurations/presets/vanilla/paper-global.yml b/src/main/resources/configurations/presets/vanilla/paper-global.yml
 new file mode 100644
-index 0000000000000000000000000000000000000000..c345ce25924d2d7021cf10a49d33ea63ff3a1c1b
+index 0000000000000000000000000000000000000000..847f0e2f462fe0c2f5c279bc07e30f9ec30df96a
 --- /dev/null
 +++ b/src/main/resources/configurations/presets/vanilla/paper-global.yml
-@@ -0,0 +1,9 @@
-+packet-limiter:
+@@ -0,0 +1,7 @@
 +unsupported-settings:
 +  allow-headless-pistons: true
 +  allow-permanent-block-break-exploits: true
 +  allow-piston-duplication: true
 +  perform-username-validation: false
-+  allow-grindstone-overstacking: true
 +  allow-unsafe-end-portal-teleportation: true
 +  allow-tripwire-disarming-exploits: true
 diff --git a/src/main/resources/configurations/presets/vanilla/paper-world-defaults.yml b/src/main/resources/configurations/presets/vanilla/paper-world-defaults.yml

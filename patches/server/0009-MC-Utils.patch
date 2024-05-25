@@ -7751,10 +7751,10 @@ index 34933c5324126f9afdc5cba9dea997ace8f01806..219062cff8a05c765b092f1525043d9d
              return false;
          } else {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index ce8873405cd4714c644233d23842114e7f44777f..35f93c592ddc50784a91649cd517c4c450b2eb3a 100644
+index 6402820b6660d1bcdbc4ad54795c90c365261f5a..29f82ffa6b6f86525248e3e00d917e172044d0b3 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2570,4 +2570,9 @@ public final class CraftServer implements Server {
+@@ -2574,4 +2574,9 @@ public final class CraftServer implements Server {
          return this.spigot;
      }
      // Spigot end
@@ -8284,11 +8284,11 @@ index 0c7c97f27853843ec714e47f5b570f9d09bbba14..ff422d4d4f2b764370f0ee2af1303485
          ANIMAL,
          RAIDER,
 diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index 0ab8825951125abe118efb4aebf47abcedd1f5f5..c498e87034bbdb0b7a1d6f6218d64880b92edcab 100644
+index a0b1606219a72fb70bdb3ba4eae8c4e93c2e10d6..de14376f109941ca176b2ed9c7e508f926d9d9a4 100644
 --- a/src/main/java/org/spigotmc/SpigotConfig.java
 +++ b/src/main/java/org/spigotmc/SpigotConfig.java
-@@ -127,6 +127,12 @@ public class SpigotConfig
-             config.setDefaults(defaultConfig);
+@@ -131,6 +131,12 @@ public class SpigotConfig
+                 });
          }
          // Paper end - Configuration Presets
 +
