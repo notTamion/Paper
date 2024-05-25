@@ -28,10 +28,10 @@ index a96a8af987a1bb2e9b4510afab72aa9d99a8629f..52383284373d9cb0202ed758f312166a
      runtimeOnly(log4jPlugins.output)
      alsoShade(log4jPlugins.output)
 diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index 3bd7ad18ca9d394b4d5fe7afdd81d358884ffda8..2aea56740ba6fbce281e90b6616e92861a8304ce 100644
+index dd54560e6ec1fc29a544047402d91b7dfaa51147..27ec0fb73fe06b8fea23a5a16049b796fa8e1e1d 100644
 --- a/src/main/java/org/spigotmc/SpigotConfig.java
 +++ b/src/main/java/org/spigotmc/SpigotConfig.java
-@@ -294,7 +294,7 @@ public class SpigotConfig
+@@ -298,7 +298,7 @@ public class SpigotConfig
      private static void playerSample()
      {
          SpigotConfig.playerSample = SpigotConfig.getInt( "settings.sample-count", 12 );

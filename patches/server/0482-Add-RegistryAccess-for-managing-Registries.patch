@@ -789,7 +789,7 @@ index 7c1304b42c6692cf66613fb2cf851b9df17f21e5..0b19ddf411933240f3cdc6b4e9ce3817
      @Override
      public B get(NamespacedKey namespacedKey) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 3ae20354538abcdbb92cdd02539cfde9ed53c012..8a3169dc1efa5f1ac410ce93d36a2f97699aa78a 100644
+index 453348a4a30b8884c2c9cf9254d44aa53d47a925..7705c05f6d1b1cc6774ca9fe2430f5baac365331 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -279,7 +279,7 @@ public final class CraftServer implements Server {
@@ -801,7 +801,7 @@ index 3ae20354538abcdbb92cdd02539cfde9ed53c012..8a3169dc1efa5f1ac410ce93d36a2f97
      private YamlConfiguration configuration;
      private YamlConfiguration commandsConfiguration;
      private final Yaml yaml = new Yaml(new SafeConstructor(new LoaderOptions()));
-@@ -2696,7 +2696,7 @@ public final class CraftServer implements Server {
+@@ -2698,7 +2698,7 @@ public final class CraftServer implements Server {
  
      @Override
      public <T extends Keyed> Registry<T> getRegistry(Class<T> aClass) {

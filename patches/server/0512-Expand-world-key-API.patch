@@ -20,10 +20,10 @@ index 9801f78f1d44fd5a72fbdb319681b683e8fb85c4..1e720b96f0367652db6924b8654deaa9
      // Paper end
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 8a3169dc1efa5f1ac410ce93d36a2f97699aa78a..c78e6197ccd7793926cbcd18f2c055c2aca0f6d7 100644
+index 7705c05f6d1b1cc6774ca9fe2430f5baac365331..55d48192b975fa031d7857eda01391c451d7238b 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1152,9 +1152,15 @@ public final class CraftServer implements Server {
+@@ -1154,9 +1154,15 @@ public final class CraftServer implements Server {
          File folder = new File(this.getWorldContainer(), name);
          World world = this.getWorld(name);
  
@@ -41,7 +41,7 @@ index 8a3169dc1efa5f1ac410ce93d36a2f97699aa78a..c78e6197ccd7793926cbcd18f2c055c2
  
          if (folder.exists()) {
              Preconditions.checkArgument(folder.isDirectory(), "File (%s) exists and isn't a folder", name);
-@@ -1280,7 +1286,7 @@ public final class CraftServer implements Server {
+@@ -1282,7 +1288,7 @@ public final class CraftServer implements Server {
          } else if (name.equals(levelName + "_the_end")) {
              worldKey = net.minecraft.world.level.Level.END;
          } else {
@@ -50,7 +50,7 @@ index 8a3169dc1efa5f1ac410ce93d36a2f97699aa78a..c78e6197ccd7793926cbcd18f2c055c2
          }
  
          // If set to not keep spawn in memory (changed from default) then adjust rule accordingly
-@@ -1376,6 +1382,15 @@ public final class CraftServer implements Server {
+@@ -1378,6 +1384,15 @@ public final class CraftServer implements Server {
          return null;
      }
  

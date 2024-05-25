@@ -529,7 +529,7 @@ index f077b8ff0bf0d96628db3569132696b68fd79921..5f11f5b16766f9d1d5640ae037e259be
              value.append("\n   Plugins: {");
              for (Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 5c3cb576042e57e903206bf3070b684555c5db02..30f2fd3c85a3eb707f504eaa9df1f11bef4f9623 100644
+index 02d189d1fa2457be9b02c1e46ed2f744bd2172e2..3b880fcd0a3f6339593729f513ea717dee3ec478 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -10,8 +10,6 @@ import com.google.common.collect.MapMaker;
@@ -583,7 +583,7 @@ index 5c3cb576042e57e903206bf3070b684555c5db02..30f2fd3c85a3eb707f504eaa9df1f11b
          this.structureManager = new CraftStructureManager(console.getStructureManager(), console.registryAccess());
          this.dataPackManager = new CraftDataPackManager(this.getServer().getPackRepository());
          this.serverTickManager = new CraftServerTickManager(console.tickRateManager());
-@@ -580,6 +575,13 @@ public final class CraftServer implements Server {
+@@ -582,6 +577,13 @@ public final class CraftServer implements Server {
          return this.bukkitVersion;
      }
  

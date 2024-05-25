@@ -5,10 +5,10 @@ Subject: [PATCH] Use correct seed on api world load
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index e1b99bea3f7b453e199d45f092af26397c67eb5c..28d8cd8b289e200e836d848e15e61a5495197aa8 100644
+index f157790deb4af973a35a32d40d3ad084e75da9a4..1448d5a8d1bd7991e4183c7e2aa714b775f6d7c9 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1367,7 +1367,7 @@ public final class CraftServer implements Server {
+@@ -1369,7 +1369,7 @@ public final class CraftServer implements Server {
              net.minecraft.server.Main.forceUpgrade(worldSession, DataFixers.getDataFixer(), this.console.options.has("eraseCache"), () -> true, iregistrycustom_dimension, this.console.options.has("recreateRegionFiles"));
          }
  

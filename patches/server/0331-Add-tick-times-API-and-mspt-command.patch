@@ -184,10 +184,10 @@ index 5d8fb0a781b2f86ab15c7045cd09c58563848848..3788057fa995d11c23f189c39d0554e9
 +    // Paper end - Add tick times API and /mspt command
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index cac49bf853f66eb886feed4e791bf7c295833831..006a314ce33d07ebcbce768c21a024478180983a 100644
+index 00f86a40a74f96bdef2d64f7ea3c9909f6f7e840..f524f5208e530c4116737a5c0004a036396806ed 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2657,6 +2657,16 @@ public final class CraftServer implements Server {
+@@ -2659,6 +2659,16 @@ public final class CraftServer implements Server {
          return CraftMagicNumbers.INSTANCE;
      }
  

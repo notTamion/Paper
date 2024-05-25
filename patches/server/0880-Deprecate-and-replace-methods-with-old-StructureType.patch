@@ -5,10 +5,10 @@ Subject: [PATCH] Deprecate and replace methods with old StructureType
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 28d8cd8b289e200e836d848e15e61a5495197aa8..cf961257d1880d0321df8befe0339a3aa03600a5 100644
+index 1448d5a8d1bd7991e4183c7e2aa714b775f6d7c9..d2d6e4c222383aeb5a0f687fd6672b671df43334 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1972,6 +1972,11 @@ public final class CraftServer implements Server {
+@@ -1974,6 +1974,11 @@ public final class CraftServer implements Server {
  
          ServerLevel worldServer = ((CraftWorld) world).getHandle();
          Location structureLocation = world.locateNearestStructure(location, structureType, radius, findUnexplored);
@@ -20,7 +20,7 @@ index 28d8cd8b289e200e836d848e15e61a5495197aa8..cf961257d1880d0321df8befe0339a3a
          BlockPos structurePosition = CraftLocation.toBlockPosition(structureLocation);
  
          // Create map with trackPlayer = true, unlimitedTracking = true
-@@ -1982,6 +1987,31 @@ public final class CraftServer implements Server {
+@@ -1984,6 +1989,31 @@ public final class CraftServer implements Server {
  
          return CraftItemStack.asBukkitCopy(stack);
      }

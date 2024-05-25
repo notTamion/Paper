@@ -105,10 +105,10 @@ index 970d1ddf0a014b47b0ac97440489706137324991..e4086bea596e5f5d71491e0b7ad650d7
              this.connection.disconnect(ServerConfigurationPacketListenerImpl.DISCONNECT_REASON_INVALID_DATA);
          }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index b5ffcd5e881c595a15bf3b5cf6fe101386181f91..e6c86bbf54f7d1a15263218134b6c63faa630f56 100644
+index eed30e9b134cebfedc78449415d1311470d13e25..e127746a4ff4ed04dc619d4a285283b524ee2646 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1020,6 +1020,7 @@ public final class CraftServer implements Server {
+@@ -1022,6 +1022,7 @@ public final class CraftServer implements Server {
                  plugin.getDescription().getFullName(),
                  "This plugin is not properly shutting down its async tasks when it is being reloaded.  This may cause conflicts with the newly loaded version of the plugin"
              ));

@@ -1591,10 +1591,10 @@ index 8199fd0a50e0f7d2e1f2a14ac525bc6bd9feeac4..b0518725a2e145d29bd5bc0aa7e6998a
          };
      }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 8a0716f2a927b4af31d67092127e91cf52799d63..2b8cccbe1ca66a9e287aa4bfbdc376f060865fa5 100644
+index d129b07525b4e5f071218e24c75af5753bd0b1fd..2c6b7d5703dbde16ee66989cbd7acbabce5a4685 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -378,7 +378,7 @@ public final class CraftServer implements Server {
+@@ -380,7 +380,7 @@ public final class CraftServer implements Server {
          this.saveCommandsConfig();
          this.overrideAllCommandBlockCommands = this.commandsConfiguration.getStringList("command-block-overrides").contains("*");
          this.ignoreVanillaPermissions = this.commandsConfiguration.getBoolean("ignore-vanilla-permissions");
@@ -1603,7 +1603,7 @@ index 8a0716f2a927b4af31d67092127e91cf52799d63..2b8cccbe1ca66a9e287aa4bfbdc376f0
          this.overrideSpawnLimits();
          console.autosavePeriod = this.configuration.getInt("ticks-per.autosave");
          this.warningState = WarningState.value(this.configuration.getString("settings.deprecated-verbose"));
-@@ -2588,12 +2588,31 @@ public final class CraftServer implements Server {
+@@ -2590,12 +2590,31 @@ public final class CraftServer implements Server {
      private final org.bukkit.Server.Spigot spigot = new org.bukkit.Server.Spigot()
      {
  

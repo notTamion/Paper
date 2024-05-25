@@ -4918,16 +4918,18 @@ index 0000000000000000000000000000000000000000..614aba60bb07946a144650fd3aedb316
 +    protected abstract boolean belowZero(O value);
 +}
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index b334265d4015fec13d7fedbffba2b6c22f4c8bc8..3da0bb605fb1da2dde1890696e93ff70156ffbf1 100644
+index b334265d4015fec13d7fedbffba2b6c22f4c8bc8..dbe672525b51fb3b085b51fee4b5aeeedc116bc8 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
-@@ -130,12 +130,27 @@ public class Main {
+@@ -130,12 +130,31 @@ public class Main {
              Path path2 = Paths.get("eula.txt");
              Eula eula = new Eula(path2);
  
++            // Paper start - Configuration Presets
 +            String configurationPreset = System.getProperty("paper.configurationPreset");
 +            if (configurationPreset != null && Main.class.getClassLoader().getResource("configurations/presets/" + configurationPreset) == null)
 +                throw new IllegalArgumentException("Can't find configuration preset \"" + configurationPreset + "\"");
++            // Paper end - Configuration Presets
 +
 +            // Paper start - load config files early for access below if needed
 +            org.bukkit.configuration.file.YamlConfiguration bukkitConfiguration = io.papermc.paper.configuration.PaperConfigurations.loadLegacyConfigFile((File) optionset.valueOf("bukkit-settings"));
@@ -4940,6 +4942,7 @@ index b334265d4015fec13d7fedbffba2b6c22f4c8bc8..3da0bb605fb1da2dde1890696e93ff70
                  YamlConfiguration configuration = YamlConfiguration.loadConfiguration(configFile);
                  configuration.options().copyDefaults(true);
 -                configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/bukkit.yml"), Charsets.UTF_8)));
++                // Paper start - Configuration Presets
 +                if (configurationPreset == null || Main.class.getClassLoader().getResource("configurations/presets/" + configurationPreset + "/bukkit.yml") == null) {
 +                    configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/bukkit.yml"), Charsets.UTF_8)));
 +                } else {
@@ -4947,10 +4950,11 @@ index b334265d4015fec13d7fedbffba2b6c22f4c8bc8..3da0bb605fb1da2dde1890696e93ff70
 +                    defaultConfig.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/bukkit.yml"), Charsets.UTF_8)));
 +                    configuration.setDefaults(defaultConfig);
 +                }
++                // Paper end - Configuration Presets
                  configuration.save(configFile);
  
                  File commandFile = (File) optionset.valueOf("commands-settings");
-@@ -163,7 +178,7 @@ public class Main {
+@@ -163,7 +182,7 @@ public class Main {
              }
  
              File file = (File) optionset.valueOf("universe"); // CraftBukkit
@@ -5088,14 +5092,15 @@ index ecbb926986bbc0ad6fe108b782cdc17ee8a9f035..b06ffa8d5953c8f0a47daf056495cd42
          this.world = new CraftWorld((ServerLevel) this, gen, biomeProvider, env);
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 3d80f58524861ad808caa35964676f0561b25547..966196ae49683178b81494e507978c595c164235 100644
+index 3d80f58524861ad808caa35964676f0561b25547..268741fd8c7b73dd487219061eb8a586eee667b8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -334,7 +334,14 @@ public final class CraftServer implements Server {
+@@ -334,7 +334,16 @@ public final class CraftServer implements Server {
  
          this.configuration = YamlConfiguration.loadConfiguration(this.getConfigFile());
          this.configuration.options().copyDefaults(true);
 -        this.configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("configurations/bukkit.yml"), Charsets.UTF_8)));
++        // Paper start - Configuration Presets
 +        String configurationPreset = System.getProperty("paper.configurationPreset");
 +        if (configurationPreset == null || Main.class.getClassLoader().getResource("configurations/presets" + configurationPreset + "/bukkit.yml") == null) {
 +            configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/bukkit.yml"), Charsets.UTF_8)));
@@ -5104,10 +5109,11 @@ index 3d80f58524861ad808caa35964676f0561b25547..966196ae49683178b81494e507978c59
 +            defaultConfig.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("configurations/bukkit.yml"), Charsets.UTF_8)));
 +            configuration.setDefaults(defaultConfig);
 +        }
++        // Paper end - Configuration Presets
          ConfigurationSection legacyAlias = null;
          if (!this.configuration.isString("aliases")) {
              legacyAlias = this.configuration.getConfigurationSection("aliases");
-@@ -928,6 +935,7 @@ public final class CraftServer implements Server {
+@@ -928,6 +937,7 @@ public final class CraftServer implements Server {
          }
  
          org.spigotmc.SpigotConfig.init((File) this.console.options.valueOf("spigot-settings")); // Spigot
@@ -5140,7 +5146,7 @@ index 4b8602b168f9dd386aa72b4e5d189c441c93542e..1e3ca7ca98abfd5be233a7eeb6dad201
          };
  
 diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
-index 9658f2961d9b5632ad1abdba26a2443642624f69..3bd7ad18ca9d394b4d5fe7afdd81d358884ffda8 100644
+index 9658f2961d9b5632ad1abdba26a2443642624f69..0ab8825951125abe118efb4aebf47abcedd1f5f5 100644
 --- a/src/main/java/org/spigotmc/SpigotConfig.java
 +++ b/src/main/java/org/spigotmc/SpigotConfig.java
 @@ -96,7 +96,7 @@ public class SpigotConfig
@@ -5152,22 +5158,18 @@ index 9658f2961d9b5632ad1abdba26a2443642624f69..3bd7ad18ca9d394b4d5fe7afdd81d358
      {
          for ( Method method : clazz.getDeclaredMethods() )
          {
-@@ -118,7 +118,17 @@ public class SpigotConfig
-                 }
+@@ -119,6 +119,14 @@ public class SpigotConfig
              }
          }
--
-+        // Paper start
+ 
++        // Paper start - Configuration Presets
 +        String configurationPreset = System.getProperty("paper.configurationPreset");
 +        if (configurationPreset != null && SpigotConfig.class.getClassLoader().getResource("configurations/presets/" + configurationPreset + "/spigot.yml") != null) {
 +            YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new java.io.InputStreamReader(SpigotConfig.class.getClassLoader().getResourceAsStream("configurations/presets/" + configurationPreset + "/spigot.yml"), com.google.common.base.Charsets.UTF_8));
 +            defaultConfig.setDefaults(config.getDefaults());
 +            config.setDefaults(defaultConfig);
 +        }
-+        SpigotConfig.save();
-+    }
-+    public static void save() {
-+        // Paper end
++        // Paper end - Configuration Presets
          try
          {
              SpigotConfig.config.save( SpigotConfig.CONFIG_FILE );
