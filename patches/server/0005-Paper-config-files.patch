@@ -130,7 +130,7 @@ index 0000000000000000000000000000000000000000..042478cf7ce150f1f1bc5cddd7fa40f8
 +}
 diff --git a/src/main/java/io/papermc/paper/configuration/Configurations.java b/src/main/java/io/papermc/paper/configuration/Configurations.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..9aab5af79f30b6c99183aecc09f95612991db5e4
+index 0000000000000000000000000000000000000000..7a6c1b3c49ed858891f2735acb692f6eb2214594
 --- /dev/null
 +++ b/src/main/java/io/papermc/paper/configuration/Configurations.java
 @@ -0,0 +1,382 @@
@@ -264,7 +264,7 @@ index 0000000000000000000000000000000000000000..9aab5af79f30b6c99183aecc09f95612
 +            .defaultOptions(this.applyObjectMapperFactory(this.createGlobalObjectMapperFactoryBuilder().build()))
 +            .path(configFile)
 +            .build();
-+        ConfigurationNode node;
++        final ConfigurationNode node;
 +        if (Files.notExists(configFile)) {
 +            node = CommentedConfigurationNode.root(loader.defaultOptions());
 +            node.node(Configuration.VERSION_FIELD).raw(this.globalConfigVersion());
@@ -307,7 +307,7 @@ index 0000000000000000000000000000000000000000..9aab5af79f30b6c99183aecc09f95612
 +        final Path configFile = this.globalFolder.resolve(this.defaultWorldConfigFileName);
 +        final DefaultWorldLoader result = this.createDefaultWorldLoader(false, contextMap, configFile);
 +        final YamlConfigurationLoader loader = result.loader();
-+        ConfigurationNode node = loader.load();
++        final ConfigurationNode node = loader.load();
 +        if (result.isNewFile()) { // add version to new files
 +            node.node(Configuration.VERSION_FIELD).raw(this.worldConfigVersion());
 +        } else {
@@ -5203,14 +5203,6 @@ index 974e679ff20193f85fccb6e779a7ba791d0c5db4..8491ff48051224204b58d273c4971d16
      }
  
      public <T> List getList(String path, T def)
-diff --git a/src/main/resources/configurations/presets/vanilla/bukkit.yml b/src/main/resources/configurations/presets/vanilla/bukkit.yml
-new file mode 100644
-index 0000000000000000000000000000000000000000..22f9c8a3d8282162dc4a9eb672f01b81dafb4e2d
---- /dev/null
-+++ b/src/main/resources/configurations/presets/vanilla/bukkit.yml
-@@ -0,0 +1,2 @@
-+settings:
-+  shutdown-message: Server shutdown
 diff --git a/src/main/resources/configurations/presets/vanilla/paper-global.yml b/src/main/resources/configurations/presets/vanilla/paper-global.yml
 new file mode 100644
 index 0000000000000000000000000000000000000000..847f0e2f462fe0c2f5c279bc07e30f9ec30df96a
